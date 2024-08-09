@@ -33,7 +33,7 @@
                 <td>{{ item.cvv }}</td>
                
                 <td>
-                    <button type="button" class="btn btn-warning btn-sm"  data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <button type="button" class="btn btn-warning btn-sm"  data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="selectItem(item)">
                         <i class="fa fa-pencil"></i>
                     </button>
                     &nbsp;
@@ -51,42 +51,42 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5">New Card</h1>
-              <h1 class="modal-title fs-5">Update Card</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <h1 *ngIf="!isUpdate" class="modal-title fs-5">New Card</h1>
+              <h1 *ngIf="isUpdate" class="modal-title fs-5">Update Card</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="newCard()"></button>
             </div>
             <div class="modal-body">
-                <form>
+                <form [formGroup]="formCard">
                     <div class="mb-3 row">
                         <label class="col-sm-2 col-form-label">Name</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control">
+                          <input type="text" class="form-control" formControlName="name">
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label class="col-sm-2 col-form-label">Number</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control">
+                          <input type="text" class="form-control" formControlName="number">
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label class="col-sm-2 col-form-label">Type</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control">
+                          <input type="text" class="form-control" formControlName="type">
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label class="col-sm-2 col-form-label">CVV</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control">
+                          <input type="text" class="form-control" formControlName="cvv">
                         </div>
                     </div>
                   </form>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-success btn-sm">Save</button>
-              <button type="button" class="btn btn-warning btn-sm">Update</button>
+              <button *ngIf="!isUpdate" type="button" class="btn btn-success btn-sm">Save</button>
+              <button *ngIf="isUpdate" type="button" class="btn btn-warning btn-sm">Update</button>
             </div>
           </div>
         </div>
