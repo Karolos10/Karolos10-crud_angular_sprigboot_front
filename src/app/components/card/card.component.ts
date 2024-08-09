@@ -37,6 +37,16 @@ export class CardComponent implements OnInit{
     });
   }
 
+  save(){
+    this.formCard.controls['status'].setValue('1');
+    this.cardService.saveCard(this.formCard.value).subscribe( resp => {
+      if(resp){
+        this.list();
+        this.formCard.reset();
+      }
+    })
+  }
+
   newCard(){
     this.isUpdate = false;
     this.formCard.reset();

@@ -85,7 +85,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
-              <button *ngIf="!isUpdate" type="button" class="btn btn-success btn-sm">Save</button>
+              <button *ngIf="!isUpdate" type="button" class="btn btn-success btn-sm" (click)="save()">Save</button>
               <button *ngIf="isUpdate" type="button" class="btn btn-warning btn-sm">Update</button>
             </div>
           </div>
