@@ -56,6 +56,14 @@ export class CardComponent implements OnInit{
     })
   }
 
+  delete(id: any){
+    this.cardService.deleteCard(id).subscribe( resp => {
+      if(resp){
+        this.list();
+      }
+    })
+  }
+
   newCard(){
     this.isUpdate = false;
     this.formCard.reset();

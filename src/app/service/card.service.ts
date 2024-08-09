@@ -28,6 +28,6 @@ export class CardService {
   }
 
   deleteCard(id: number): Observable<any> {
-    return this.httpClient.get<any>(this.URL_API + '/delete' + id).pipe(map(res => res));
+    return this.httpClient.get<any>(this.URL_API + '/delete/' + id).pipe(map(res => res));
   }
 }
